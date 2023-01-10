@@ -12,7 +12,7 @@ export default function Login({ navigation, GlobalState }) {
 
   return (
     <View style={styles.screen}>
-      <Text>{`Bluetooth is: ${btStat? "Connected":"Disconnected"}`}</Text>
+      <Text style={{fontWeight:'bold', fontSize: 20}}>{`Bluetooth is: ${btStat? "Connected":"Disconnected"}`}</Text>
       <View style={styles.horizontContainers}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Bt')}
@@ -23,7 +23,7 @@ export default function Login({ navigation, GlobalState }) {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonBt}>
-          <Text>
+          <Text style={{fontWeight:'bold',}}>
             Clear Connect
           </Text>
         </TouchableOpacity>
@@ -66,6 +66,9 @@ const styles = StyleSheet.create({
       backgroundColor: '#D9EEF5'
   },
   input: {
+    color: '#00BFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
     backgroundColor: 'white',
     padding: 15,
     paddingTop: 10,

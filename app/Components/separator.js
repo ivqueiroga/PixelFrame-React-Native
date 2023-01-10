@@ -6,7 +6,7 @@ export default function Separator(props) {
     <View 
       style={[styles.separator,
       {
-        borderColor: props.color? props.color: '#eceff1'
+        borderColor: props.color? props.color: 'gray'
       }]}
     />
   );

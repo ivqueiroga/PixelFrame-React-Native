@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
   line: {
     borderBottomWidth: 1,
     marginLeft: 5,
+    marginRight: 10,
     flex: 1,
     marginTop: 3,
-    borderColor: "#eceff1"
+    borderColor: 'gray'
   }
 });

@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   wrapperName:{
   },
   name:{
+    color: '#494949',
   },
   iconRight:{
   },

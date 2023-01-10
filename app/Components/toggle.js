@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     flex: 1,
+    color: '#494949',
   },
   switch: {
     width: 50,
