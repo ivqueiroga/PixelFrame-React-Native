@@ -10,21 +10,26 @@ PIXEL-FRAME is a React Native app written to control a 16x16 WS2812b ARGB led ma
 
 
 
-#### Home Screens
+#### Home Screen
 - Login &emsp;&emsp;&emsp;&emsp;&emsp; ![85](https://progress-bar.dev/85)
 - Home &emsp;&emsp;&emsp;&emsp;&emsp;![80](https://progress-bar.dev/80)
 
-#### Functions Screens
+#### Settings Screen
+- Layout &emsp;&emsp;&emsp;&emsp;&emsp;![90](https://progress-bar.dev/90)
+- Bluetooth&emsp;&emsp;&emsp;&emsp;![0](https://progress-bar.dev/0)
 
-- Clock &emsp;&emsp;&emsp;&emsp;&emsp; ![95](https://progress-bar.dev/95)
-- Effects &emsp;&emsp;&emsp;&emsp;&ensp; ![15](https://progress-bar.dev/15)
-- Emoji &emsp;&emsp;&emsp;&emsp;&emsp; ![90](https://progress-bar.dev/90)
-- Paint Board &emsp;&emsp;&ensp; ![50](https://progress-bar.dev/50)
+#### Functions Screen
 
-#### Games Screens
+- Clock &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; ![95](https://progress-bar.dev/95)
+- Effects &emsp;&emsp;&emsp;&emsp;&emsp; ![15](https://progress-bar.dev/15)
+- Emoji &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; ![90](https://progress-bar.dev/90)
+- Paint Board &emsp;&emsp;&emsp; ![50](https://progress-bar.dev/50)
 
-- PythoN &emsp;&emsp;&emsp;&ensp;&ensp;&ensp; ![10](https://progress-bar.dev/10)
-- Pixel Peble &emsp;&emsp;&emsp; ![10](https://progress-bar.dev/10)
+#### Games Screen
+
+- PythoN &emsp;&emsp;&emsp;&ensp;&ensp;&emsp; ![25](https://progress-bar.dev/25)
+- Pixel Peble &emsp;&emsp;&emsp;&ensp; ![25](https://progress-bar.dev/25)
+- Gamepad&emsp;&emsp;&emsp;&emsp;&ensp;![80](https://progress-bar.dev/80)
 
 ## Next -Steps
 
