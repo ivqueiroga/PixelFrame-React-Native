@@ -6,7 +6,7 @@ export default function Toggle(props) {
     <View style={styles.container}>
       <Text style={styles.text}>ON</Text>
       <Switch style={styles.switch} value={props.value}
-          onValueChange={props.onValueChange}
+          // onValueChange={props.onValueChange}
       />
     </View>
   );
