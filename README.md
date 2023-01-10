@@ -1,7 +1,7 @@
 # PIXEL-FRAME
 
 PIXEL-FRAME is a React Native app written to control a 16x16 WS2812b ARGB led matrix with ESP-32 DOIT DevKit v1 board.<br>
-![PF](/assets/adaptive-icon.png)
+![PF](/app/assets/adaptive-icon.png)
 
 ## Progress:
 
