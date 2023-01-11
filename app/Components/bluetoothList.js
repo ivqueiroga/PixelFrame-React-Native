@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { FlatList, TouchableOpacity, StyleSheet, Alert, PermissionsAndroid  } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { FlatList, TouchableOpacity, StyleSheet, PermissionsAndroid, NativeModules, NativeEventEmitter, Platform  } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
+import {PERMISSIONS, requestMultiple} from 'react-native-permissions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Layout from '../screens/BluetoothListLayout'
 import Empty from './empty'
 import Toggle from './toggle';
@@ -7,54 +10,29 @@ import Subtitle from './subtitle';
 import Device from './device';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import useBLE from '../helpers/bleManager';
-
-// const listei = [
-//   {
-//     name: 'Device 01',
-//     id: '01',
-//   },
-//   {
-//     name: 'Device 02',
-//     id: '02',
-//   }
-// ];
+import BleManager from 'react-native-ble-manager'
+const BleManagerModule = NativeModules.BleManager;
+const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
 export default function BluetoothList(props) {
-  const {
-    requestPermissions,
-    scanForPeripherals,
-    allDevices,
-    connectToDevice, 
-    connectedDevice, 
-    disconnectFromDevice,
-  } = useBLE();
-
   const {navigation} = props;
-  const [list, setList] = useState([]);
   const [btEnable, setBtEnable] = useState(false);
-
-  const scanForDevices = () => {
-    requestPermissions(isGranted => {
-      if (isGranted) {
-        scanForPeripherals();
-      }
-    });
-  };
+  const [list, setList] = useState([]);
 
   const renderEmpty = () =>  <Empty text='No Available Devices'/>
   const renderItem = ({item}) =>  {
     return <Device navigation={navigation} {...item}/>
   }
+
     return (
     <Layout title='Bluetooth' navigation={navigation}>
-      <TouchableOpacity onPress={scanForDevices} style={{marginLeft: '80%'}}>
-        <Icon color={'#00BFFF'} name='refresh-circle' size={50}/>
+      <TouchableOpacity onPress={renderEmpty} style={{marginLeft: '80%'}}>
+        <Icon color={'#00BFFF'} name={!btEnable?'refresh-circle':'stop-circle'} size={50}/>
       </TouchableOpacity>
-      <Toggle onValueChange={''} value={btEnable}/>
+      <Toggle value={btEnable}/>
       <Subtitle title='Devices'/>
       <FlatList
-        data={allDevices}
+        data={list}
         ListEmptyComponent={renderEmpty}
         renderItem={renderItem}
       />

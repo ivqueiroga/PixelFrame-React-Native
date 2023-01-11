@@ -21,10 +21,10 @@ export default function App() {
   // globalstate management
   const [userName, setUserName] = useState('');
   const [lampState, setLampState] = useState(false);
-  const [ledColor, setColor] = useState('white');
-  const [numberColor, setNumberColor] = useState('white');
-  const [bgOrNumber, setBgOrNumber] = useState(true);
-  const [brushColor, setBrushColor] = useState('white');
+  const [ledColor, setColor] = useState('#ffffff');
+  const [numberColor, setNumberColor] = useState('#ffffff');
+  const [bgOrNumber, setBgOrNumber] = useState(false);
+  const [brushColor, setBrushColor] = useState('#ffffff');
   const [brushOn, setBrushOn] = useState(false);
   const [btStat, setBtStat] = useState(false);
   const initialState = [

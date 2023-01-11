@@ -20,13 +20,19 @@ export default function Home({ navigation, GlobalState }) {
       };
     }, [lampState])
 
+
+    // const isBUttonActive = () => {
+      
+    // }
+
     const handleLamp = () => {
       const pickCol = initColor;
       let lampStatus = lampState;
       lampStatus = !lampState;
       setLampState(lampStatus);
-      setColor(pickCol);
-      setInitColor(ledColor);
+      setColor(pickCol, () => {
+        setInitColor(ledColor);
+      });
     }
 
     const handleLedColor = () => {
