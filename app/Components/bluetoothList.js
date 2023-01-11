@@ -17,6 +17,7 @@ const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 export default function BluetoothList(props) {
   const {navigation} = props;
   const [btEnable, setBtEnable] = useState(false);
+  const [list, setList] = useState([]);
 
   const renderEmpty = () =>  <Empty text='No Available Devices'/>
   const renderItem = ({item}) =>  {
@@ -25,13 +26,13 @@ export default function BluetoothList(props) {
 
     return (
     <Layout title='Bluetooth' navigation={navigation}>
-      <TouchableOpacity onPress={scanForMorePeripherals} style={{marginLeft: '80%'}}>
-        <Icon color={'#00BFFF'} name={!displayScanResults?'refresh-circle':'stop-circle'} size={50}/>
+      <TouchableOpacity onPress={renderEmpty} style={{marginLeft: '80%'}}>
+        <Icon color={'#00BFFF'} name={!btEnable?'refresh-circle':'stop-circle'} size={50}/>
       </TouchableOpacity>
       <Toggle value={btEnable}/>
       <Subtitle title='Devices'/>
       <FlatList
-        data={displayScanResults?peripheralsDiscovered:null}
+        data={list}
         ListEmptyComponent={renderEmpty}
         renderItem={renderItem}
       />
