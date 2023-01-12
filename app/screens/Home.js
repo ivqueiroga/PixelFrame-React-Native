@@ -7,32 +7,15 @@ import Footer from '../Components/footer';
 
 export default function Home({ navigation, GlobalState }) {
     const { userName, lampState, setLampState, ledColor, setColor, setBgOrNumber } = GlobalState;
-    const [ initColor, setInitColor ] = useState('white');
-    const [ colorSetEnabled, setColorSetEnabled] = useState(true);
+    const [ initColor, setInitColor ] = useState('#ffffff');
 
-    useEffect(() => {
-      if (lampState) {
-        setColor(ledColor);
-        setColorSetEnabled(false);
-      }else {
-        setColor('black');
-        setColorSetEnabled(true);
-      };
-    }, [lampState])
-
-
-    // const isBUttonActive = () => {
-      
-    // }
-
-    const handleLamp = () => {
+    const handleLamp = async () => {
       const pickCol = initColor;
       let lampStatus = lampState;
       lampStatus = !lampState;
       setLampState(lampStatus);
-      setColor(pickCol, () => {
-        setInitColor(ledColor);
-      });
+      setColor(pickCol);
+      setInitColor(ledColor);
     }
 
     const handleLedColor = () => {
@@ -59,23 +42,23 @@ export default function Home({ navigation, GlobalState }) {
                   onPress={() => handleLamp()}
                 />
                 <Text style={styles.text} >Color:</Text>
-                <TouchableOpacity onPress={() => handleLedColor()} disabled={colorSetEnabled}>
-                  <View style={styles.pickedColor} backgroundColor={ledColor}></View>
+                <TouchableOpacity onPress={() => handleLedColor()} disabled={!lampState}>
+                  <View style={styles.pickedColor} backgroundColor={lampState?ledColor:'black'}></View>
                 </TouchableOpacity>                
               </View>
               <Text style={styles.subMenuText} >Functions</Text>
               <View style={styles.containers}>
                 <TouchableOpacity
                   style={ 
-                    !colorSetEnabled
+                    lampState
                     ? {...styles.button}
                     : {...styles.buttonOff}
                   }
                   onPress={() => navigation.navigate('Clock')}
-                  disabled={colorSetEnabled}
+                  disabled={!lampState}
                 >
                   <Text style={ 
-                  !colorSetEnabled
+                  lampState
                     ? {...styles.buttonText}
                     : {...styles.buttonTextOff}
                     } 
@@ -85,15 +68,15 @@ export default function Home({ navigation, GlobalState }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={ 
-                    !colorSetEnabled
+                    lampState
                     ? {...styles.button}
                     : {...styles.buttonOff}
                   }
                   onPress={() => navigation.navigate('Effects')}
-                  disabled={colorSetEnabled}
+                  disabled={!lampState}
                 >
                   <Text style={ 
-                  !colorSetEnabled
+                  lampState
                     ? {...styles.buttonText}
                     : {...styles.buttonTextOff}
                     } 
@@ -103,15 +86,15 @@ export default function Home({ navigation, GlobalState }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={ 
-                    !colorSetEnabled
+                    lampState
                     ? {...styles.button}
                     : {...styles.buttonOff}
                   }
                   onPress={() => navigation.navigate('Emoji')}
-                  disabled={colorSetEnabled}
+                  disabled={!lampState}
                 >
                   <Text style={ 
-                  !colorSetEnabled
+                  lampState
                     ? {...styles.buttonText}
                     : {...styles.buttonTextOff}
                     } 
@@ -121,15 +104,15 @@ export default function Home({ navigation, GlobalState }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={ 
-                    !colorSetEnabled
+                    lampState
                     ? {...styles.button}
                     : {...styles.buttonOff}
                   }
                   onPress={() => navigation.navigate('PaintBoard')}
-                  disabled={colorSetEnabled}
+                  disabled={!lampState}
                 >
                   <Text style={ 
-                  !colorSetEnabled
+                  lampState
                     ? {...styles.buttonText}
                     : {...styles.buttonTextOff}
                     } 
@@ -142,15 +125,15 @@ export default function Home({ navigation, GlobalState }) {
               <View style={styles.containers}>
                 <TouchableOpacity
                     style={ 
-                      !colorSetEnabled
+                      lampState
                       ? {...styles.button}
                       : {...styles.buttonOff}
                     }
                     onPress={() => navigation.navigate('PythoN')}
-                    disabled={colorSetEnabled}
+                    disabled={!lampState}
                   >
                     <Text style={ 
-                    !colorSetEnabled
+                    lampState
                       ? {...styles.buttonText}
                       : {...styles.buttonTextOff}
                       } 
@@ -160,15 +143,15 @@ export default function Home({ navigation, GlobalState }) {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={ 
-                      !colorSetEnabled
+                      lampState
                       ? {...styles.button}
                       : {...styles.buttonOff}
                     }
                     onPress={() => navigation.navigate('PixelPebble')}
-                    disabled={colorSetEnabled}
+                    disabled={!lampState}
                   >
                     <Text style={ 
-                    !colorSetEnabled
+                    lampState
                       ? {...styles.buttonText}
                       : {...styles.buttonTextOff}
                       } 
