@@ -1,28 +1,33 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity , FlatList  } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity , FlatList, Alert  } from 'react-native';
 
 import Header from '../Components/header';
 import Footer from '../Components/footer';
 const H = 16;
 const W = 16;
 const MATRIX = H * W;
+let newArr = []
 
 export default function PaintBoard({ navigation, GlobalState }) {
   const { brushColor, setBrushOn, ledArray, setLedArray, reRender, setReRender } = GlobalState;
 
   useEffect(() => {
-    const currentArray = [];
-    if (reRender === true) {
+    if(reRender){
       for(let i = 0; i < MATRIX; i++) {
-        currentArray[i] = {id: i, hex: 'white'};
-        setLedArray(currentArray);
+        newArr.push({id: i, hex: 'white'});
       }
-      setReRender(false);
+      console.log('clear done');
     }
-  }, [reRender, brushColor]);
+  }, []);
 
   const clearBoard = () => {
-    setReRender(true);
+    Alert.alert('Clearing board!', 'Are you sure you want to clear the board?',[
+      {
+        text: 'No', onePress: () => console.log('clear aborted')
+      }, 
+      {text: 'Yes', onPress: () => {setReRender(true)}}
+    ])
+    setReRender(false);
   }
 
   const handleBrushColor = () => {
@@ -32,10 +37,15 @@ export default function PaintBoard({ navigation, GlobalState }) {
 
   const handleClick = (e) => {
     const { id } = e;
-    const newLedArray = ledArray;
-    newLedArray[id] = {hex: brushColor}
+    newArr[id] = {hex: brushColor}; 
+    // setLedArray(newLedArray.map((pix, pixIndex) => {
+    //     if (pixIndex === id) {
+    //       pix.hex = brushColor
+    //     }
+    //   }));
+    // }
     setLedArray([...newLedArray]);
-  };
+  }
 
   const Item = ({title}) => (
     <TouchableOpacity
@@ -46,7 +56,6 @@ export default function PaintBoard({ navigation, GlobalState }) {
         flexDirection:"row",
         alignItems:'center',
         justifyContent:'center',
-        padding: 10,
       }
       }>
     </TouchableOpacity>
@@ -54,7 +63,7 @@ export default function PaintBoard({ navigation, GlobalState }) {
 
   const renderItem = ({item}) => (
     <Item title={item}
-      style={{ flex: 1, flexDirection: 'column', margin: 1 }}
+      style={{ flex: 1, flexDirection: 'column' }}
     />
   );
 
@@ -71,14 +80,14 @@ export default function PaintBoard({ navigation, GlobalState }) {
                   <View style={styles.pickedColor} backgroundColor={brushColor}></View>
             </TouchableOpacity> 
           </View>
-          <TouchableOpacity
+          <TouchableOpacity style={styles.clearBtnR }
             onPress={clearBoard}
           >
-            <Text style={styles.subMenuText}>Clear Board</Text>
+            <Text style={styles.clearBtn }>Clear Board</Text>
           </TouchableOpacity>
           <SafeAreaView style={styles.container}>
             <FlatList contentContainerStyle={styles.gridBoard}
-              data={ledArray}
+              data={newArr}
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
               numColumns={W}
@@ -114,7 +123,9 @@ const styles = StyleSheet.create({
     marginBottom: 1,
     padding: 15,
     borderColor: 'black',
-    borderWidth: 5,
+    borderWidth: 2,
+    borderRadius: 12,
+    margin: 10,
   },
   horizontContainers: {
     flexDirection: 'row',
@@ -141,6 +152,22 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#494949',
     padding: 5,
+  },
+  clearBtn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#494949',
+    padding: 5,
+  },
+  clearBtnR: {
+    marginLeft: '25%',
+    margin: 5,
+    borderWidth: 1,
+    width: '50%',
+    borderRadius: 12,
   },
   regularText: {
     alignItems: 'center',
