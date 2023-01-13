@@ -10,29 +10,6 @@ import Leaderboard from '../Components/Leaderboard';
 export default function PixelPebble({ navigation, GlobalState }) {
   const { } = GlobalState;
 
-
-  const Item = ({name, score}) => (
-    <View style={ styles.horizontContainersN}>
-      <Text style={{fontWeight:'300'}}>{name}</Text>
-      <Text style={{
-        justifyContent: 'center',
-        alignItens: 'center',
-        alignContent: 'center',
-        textAlign:'center',
-        fontWeight:'300',
-        }}>.........................................</Text>
-      <Text style={{fontWeight:'300'}}>{score}</Text>
-    </View>
-  );
-
-  const renderItem = ({item}) => (
-    <Item 
-    style={{ flex: 1, flexDirection: 'row', margin: 1 }} 
-    name={item.name}
-    score={item.score}
-  />
-);
-
   return (
     <View style={styles.screen}>
       <Header></Header>
@@ -42,20 +19,6 @@ export default function PixelPebble({ navigation, GlobalState }) {
           <GamePad></GamePad>
           </View>
         <Leaderboard GlobalState={GlobalState} players={players} />
-        {/* <View style={styles.leaderboardContainter}>
-          <Text style={styles.leaderboard}>Leaderboard</Text>
-            <View style={styles.horizontContainersL}>
-              <Text style={styles.horizontContainersLText}>Name</Text>
-              <Text style={styles.horizontContainersLText}>Score</Text>
-            </View>
-            <View style={{paddingHorizontal: '10%'}}>
-              <FlatList contentContainerStyle={styles.gridBoard}
-                data={players}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-              />
-            </View>
-        </View> */}
       </View>
       <Footer navigation={navigation} />
     </View>
@@ -76,26 +39,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'center',
-    marginTop: 10,
-  },
-  leaderboardContainter: {
-    marginTop: 10,
-    height: '100%',
-  },
-  horizontContainersL: {
-    flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    paddingHorizontal: '10%',
-  },
-  horizontContainersLText: {
-    fontWeight: 'bold',
-  },
-  horizontContainersN: {
-    flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'space-between',
     marginTop: 10,
   },
   menuText: {
