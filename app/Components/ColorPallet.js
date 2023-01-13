@@ -21,11 +21,9 @@ export default function ColorPallet ({ navigation, GlobalState }) {
   },[]);
 
   const onColorChange = (e) => {
-    console.log(e);
     if (brushOn) {
-      setBrushColor(e, () => {
-        setBrushOn(false);
-      });
+      setBrushColor(e);
+      setBrushOn(false);
       
     } else if (bgOrNumber) {
       setColor(e);

@@ -12,13 +12,15 @@ export default function PaintBoard({ navigation, GlobalState }) {
   const { brushColor, setBrushOn, ledArray, setLedArray, reRender, setReRender } = GlobalState;
 
   useEffect(() => {
-    if(reRender){
+    for(let i = 0; i < MATRIX; i++) {
+      newArr.push({id: i, hex: 'white'});
+    }
+    if (reRender === true){
       for(let i = 0; i < MATRIX; i++) {
         newArr.push({id: i, hex: 'white'});
       }
-      console.log('clear done');
     }
-  }, []);
+  }, [reRender]);
 
   const clearBoard = () => {
     Alert.alert('Clearing board!', 'Are you sure you want to clear the board?',[
@@ -36,36 +38,52 @@ export default function PaintBoard({ navigation, GlobalState }) {
   }
 
   const handleClick = (e) => {
+    console.log(newArr);
     const { id } = e;
-    newArr[id] = {hex: brushColor}; 
+    const newLedArr = newArr;
+    newLedArr[id] = {hex: brushColor}; 
     // setLedArray(newLedArray.map((pix, pixIndex) => {
     //     if (pixIndex === id) {
     //       pix.hex = brushColor
     //     }
     //   }));
     // }
-    setLedArray([...newLedArray]);
+    setLedArray([...newLedArr]);
   }
 
-  const Item = ({title}) => (
+  // const Item = ({title}) => (
+  //   // <TouchableOpacity
+  //   // onPress={() => handleClick(title)}
+  //   // style={{
+  //   //     backgroundColor: title.hex, 
+  //   //     borderWidth: 1,
+  //   //     flexDirection:"row",
+  //   //     alignItems:'center',
+  //   //     justifyContent:'center',
+  //   //   }
+  //   //   }>
+  //   // </TouchableOpacity>
+  // );
+
+  const renderItem = ({item}) => {
+    // <Item title={item}
+    //   style={{ flex: 1, flexDirection: 'column' }}
+    // />
     <TouchableOpacity
-    onPress={() => handleClick(title)}
+    onPress={() => handleClick(item)}
     style={{
-        backgroundColor: title.hex, 
+        flex: 1, 
+        flexDirection: 'column',
+        backgroundColor: item.hex, 
         borderWidth: 1,
         flexDirection:"row",
         alignItems:'center',
         justifyContent:'center',
+        padding: 1,
       }
       }>
     </TouchableOpacity>
-  );
-
-  const renderItem = ({item}) => (
-    <Item title={item}
-      style={{ flex: 1, flexDirection: 'column' }}
-    />
-  );
+  }
 
   return (
     <View style={styles.screen}>
@@ -87,7 +105,7 @@ export default function PaintBoard({ navigation, GlobalState }) {
           </TouchableOpacity>
           <SafeAreaView style={styles.container}>
             <FlatList contentContainerStyle={styles.gridBoard}
-              data={newArr}
+              data={ledArray}
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
               numColumns={W}

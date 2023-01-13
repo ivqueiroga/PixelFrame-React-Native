@@ -7,7 +7,7 @@ import Login from './app/screens/Login';
 import Clock from './app/screens/Clock';
 import Effects from './app/screens/Effects';
 import Emoji from './app/screens/Emoji';
-// import PaintBoard from './app/screens/PaintBoard';
+import PaintBoard from './app/screens/PaintBoard';
 import PythoN from './app/screens/PythoN';
 import PixelPebble from './app/screens/PixelPebble';
 import Config from './app/screens/Config';
@@ -84,8 +84,8 @@ export default function App() {
           {props => <Emoji {...props} GlobalState={GlobalState} />}
         </Stack.Screen>
 
-        <Stack.Screen name="WIP" options={{headerShown: false}}>
-          {props => <WIP {...props} GlobalState={GlobalState} />}
+        <Stack.Screen name="PaintBoard" options={{headerShown: false}}>
+          {props => <PaintBoard {...props} GlobalState={GlobalState} />}
         </Stack.Screen>
 
         <Stack.Screen name="PythoN" options={{headerShown: false}}>
