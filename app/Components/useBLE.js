@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { PermissionsAndroid, Platform } from "react-native";
-import { BleManager } from "react-native-ble-plx";
+import { BleError, BleManager, Characteristic, Device } from "react-native-ble-plx";
+import {PERMISSIONS, requestMultiple} from 'react-native-permissions';
+import DeviceInfo from 'react-native-device-info';
+
+import {atob, btoa} from 'react-native-quick-base64';
+
+const SERVICE_UUID = "13e0ba4e-9678-11ed-a1eb-0242ac120002";
+const CHARACTERISTIC_UUID = "311ffe9e-9678-11ed-a1eb-0242ac120002";
 
 const bleManager = new BleManager();
 

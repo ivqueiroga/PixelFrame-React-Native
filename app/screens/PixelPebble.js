@@ -7,7 +7,7 @@ import Footer from '../Components/footer';
 import GamePad from '../Components/gamePad';
 import Leaderboard from '../Components/Leaderboard';
 
-export default function PixelPebble({ navigation, GlobalState }) {
+export default function PixelPebble({ navigation, GlobalState, route }) {
   const { } = GlobalState;
 
   return (
@@ -16,7 +16,10 @@ export default function PixelPebble({ navigation, GlobalState }) {
       <View style={styles.body}>
         <Text style={styles.menuText}>Pixel Pebble</Text>
           <View style={styles.horizontContainers}>
-          <GamePad></GamePad>
+          <GamePad
+          route={route}
+          navigation={navigation}
+          ></GamePad>
           </View>
         <Leaderboard GlobalState={GlobalState} players={players} />
       </View>

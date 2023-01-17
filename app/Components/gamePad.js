@@ -1,8 +1,16 @@
-import { SafeAreaView, StyleSheet, View, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Linking } from "react-native";
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function ColorPallet ({ GlobalState }) {
+export default function ColorPallet ({navigation,  GlobalState }) {
+
+  const onPress = async () => {
+
+  }
+
+  const offPress = () => {
+    
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -33,7 +41,10 @@ export default function ColorPallet ({ GlobalState }) {
                   color={'#00BFFF'}
                 />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionBtn}>
+          <TouchableOpacity
+          onPressIn={onPress}
+          onPressOut={offPress}
+          style={styles.actionBtn}>
           <Icon 
                   style={{
                   margin: 5,
