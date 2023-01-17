@@ -18,17 +18,17 @@ PIXEL-FRAME is a React Native app written to control a 16x16 WS2812b ARGB led ma
 - Layout &emsp;&emsp;&emsp;&emsp;&emsp;![90](https://progress-bar.dev/90)
 - Bluetooth&emsp;&emsp;&emsp;&emsp;![0](https://progress-bar.dev/0)
 
-#### Functions Screen
+#### Functions Screens
 
 - Clock &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; ![95](https://progress-bar.dev/95)
 - Effects &emsp;&emsp;&emsp;&emsp;&emsp; ![15](https://progress-bar.dev/15)
 - Emoji &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; ![90](https://progress-bar.dev/90)
 - Paint Board &emsp;&emsp;&emsp; ![50](https://progress-bar.dev/50)
 
-#### Games Screen
+#### Games Screens
 
-- PythoN &emsp;&emsp;&emsp;&ensp;&ensp;&emsp; ![25](https://progress-bar.dev/25)
-- Pixel Peble &emsp;&emsp;&emsp;&ensp; ![25](https://progress-bar.dev/25)
+- PythoN &emsp;&emsp;&emsp;&ensp;&ensp;&emsp; ![40](https://progress-bar.dev/40)
+- Pixel Peble &emsp;&emsp;&emsp;&ensp; ![40](https://progress-bar.dev/40)
 - Gamepad&emsp;&emsp;&emsp;&emsp;&ensp;![80](https://progress-bar.dev/80)
 
 ## Next -Steps
